@@ -60,7 +60,7 @@ fn range_matches(start: u64, end: u64) -> Vec<u64> {
             }
         }
     }
-
+    res.sort();
     res
 }
 

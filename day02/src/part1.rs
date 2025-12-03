@@ -1,4 +1,4 @@
-use std::{collections::HashSet, fs};
+use std::fs;
 
 pub fn solve(path: &str) -> u64 {
     let content = fs::read_to_string(path).unwrap();
@@ -46,23 +46,13 @@ fn range_matches(start: u64, end: u64) -> Vec<u64> {
     res
 }
 
-fn mults(num: usize) -> Vec<usize> {
-    let mut res = vec![];
-    for i in 1..(num / 2) + 1 {
-        if num % i == 0 {
-            res.push(i);
-        }
-    }
-    res
-}
-
 fn num_len(num: u64) -> usize {
     num.to_string().len()
 }
 
 #[cfg(test)]
 mod test {
-    use crate::part1::{mults, parse_range, range_matches, solve};
+    use crate::part1::{parse_range, range_matches, solve};
 
     #[test]
     fn test_solve() {
@@ -92,12 +82,5 @@ mod test {
         assert_eq!(range_matches(565653, 565659), vec![]);
         assert_eq!(range_matches(824824821, 824824827), vec![]);
         assert_eq!(range_matches(2121212118, 2121212124), vec![]);
-    }
-
-    #[test]
-    fn test_mults() {
-        assert_eq!(mults(6), vec![1, 2, 3]);
-        assert_eq!(mults(15), vec![1, 3, 5]);
-        assert_eq!(mults(16), vec![1, 2, 4, 8]);
     }
 }
